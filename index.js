@@ -35,18 +35,23 @@ app.get('/logout', function (req, res) {
 });
 
 app.get('/account', function (req, res) {
-    for (var i = 0; i < config.allowOrigin.length; i++) {
-        if (new RegExp(config.allowOrigin[i]).test(req.headers.origin)) {
-            res.header("Access-Control-Allow-Origin", req.headers.origin);
-            res.header('Access-Control-Allow-Credentials', 'true');
-            res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
-            res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-            res.header('content-type', 'application/json; charset=utf-8');
-            res.send(JSON.stringify(req.user));
-            return;
+    if (req.headers.origin) {
+        for (var i = 0; i < config.allowOrigin.length; i++) {
+            if (new RegExp(config.allowOrigin[i]).test(req.headers.origin)) {
+                res.header("Access-Control-Allow-Origin", req.headers.origin);
+                res.header('Access-Control-Allow-Credentials', 'true');
+                res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+                res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+                res.header('content-type', 'application/json; charset=utf-8');
+                res.send(JSON.stringify(req.user));
+                return;
+            }
         }
+        res.send('Unallowed origin');
     }
-    res.send('');
+    else {
+        res.send(JSON.stringify(req.user));        
+    }
 });
 
 console.log(`🍻 Weibo2Login start! Cheers!`);
