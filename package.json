@@ -1,0 +1,19 @@
+{
+  "name": "weibo2login",
+  "version": "0.0.1",
+  "description": "Node.js 封装的微博登录 API",
+  "author": "DIYgod",
+  "license": "SATA",
+  "repository": {
+    "url": "git+https://github.com/DIYgod/Weibo2Login.git",
+    "type": "git"
+  },
+  "homepage": "https://github.com/DIYgod/Weibo2Login#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "passport": "^0.3.2",
+    "passport-oauth": "^1.0.0",
+    "passport-weibo": "^0.1.2"
+  }
+}
