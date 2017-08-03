@@ -1,8 +1,6 @@
 var express = require('express');
 var session = require('express-session');
 
-var util = require('util');
-
 var passport = require('./passport');
 var config = require('./config');
 
