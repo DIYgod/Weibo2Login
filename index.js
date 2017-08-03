@@ -25,13 +25,13 @@ app.get('/',
 app.get('/callback',
     passport.authenticate('weibo', { failureRedirect: '/' }),
     function (req, res) {
-        res.send("<script>window.opener=null;window.open('','_self');window.close();</script>");
+        res.send('<script>window.location.href = "' + config.redirectURL + '"</script>');
     }
 );
 
 app.get('/logout', function (req, res) {
     req.logout();
-    res.send("<script>window.opener=null;window.open('','_self');window.close();</script>");
+    res.send('<script>window.location.href = "' + config.redirectURL + '"</script>');
 });
 
 app.get('/account', function (req, res) {
